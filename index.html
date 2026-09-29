@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plataforma interactiva de evaluación del módulo: Mantenimiento de rutina y salvaguarda de información en el Centro de Cómputo. 16 sesiones con repaso ilustrado, retos gamificados y examen final con exportación a PDF.">
+  <title>CPD · Mantenimiento de Rutina y Salvaguarda de Información</title>
+  <link rel="stylesheet" href="css/styles.css?v=19">
+  <script>
+    // diagnóstico visible de errores de ejecución
+    window.addEventListener('error', function (e) {
+      try {
+        var el = document.getElementById('errBanner');
+        if (!el) {
+          el = document.createElement('div');
+          el.id = 'errBanner';
+          el.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:99999;background:#7f1d1d;color:#fff;padding:10px 14px;font:12px/1.5 monospace;white-space:pre-wrap;';
+          document.body.appendChild(el);
+        }
+        var det = (e.error && e.error.stack) ? ('\n' + e.error.stack) : '';
+        el.textContent = '⚠ Error de ejecución: ' + (e.message || 'desconocido') + det + '\nFuente: ' + (e.filename || '—') + ' · Línea ' + (e.lineno || '—');
+      } catch (ex) { /* silencioso */ }
+    });
+  </script>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-icon">🖥️</span>
+      <span class="brand-text">
+        <strong>CPD · Evaluación Interactiva</strong>
+        <small>Mantenimiento de rutina y salvaguarda de información</small>
+      </span>
+    </div>
+    <div class="hud">
+      <div class="pill" title="Puntos de experiencia">⭐ <span id="xpVal">0</span> XP</div>
+      <div class="pill lv" title="Tu nivel">🏅 <span id="lvName">Auxiliar</span></div>
+      <div class="pill" title="Sesiones completadas"><span id="doneVal">0</span>/16 🎯</div>
+      <button id="themeBtn" class="icon-btn" title="Cambiar tema claro/oscuro">🌓</button>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs" aria-label="Navegación principal">
+    <button class="tab active" data-view="inicio">🏠 <span>Inicio</span></button>
+    <button class="tab" data-view="sesiones">📚 <span>Sesiones</span></button>
+    <button class="tab" data-view="panel">📊 <span>Mi panel</span></button>
+    <button class="tab" data-view="logros">🏆 <span>Logros</span></button>
+    <button class="tab" data-view="casos">🧩 <span>Casos</span></button>
+    <button class="tab" data-view="examen">🎓 <span>Examen final</span></button>
+  </nav>
+
+  <main id="app" aria-live="polite"></main>
+
+  <footer class="footer">
+    <p>Unidad Didáctica: <strong>Mantenimiento de rutina y salvaguarda de información en el Centro de Cómputo</strong>
+      · Módulo: Monitoreo y acciones de mantenimiento de centros de cómputo · II Semestre 2026
+      <br><span style="color:var(--good);font-weight:700">Versión v16 · ☁️ Nube activa</span></p>
+    <p class="footer-actions">
+      <button id="btnLogout" class="link-btn">🔓 Cerrar sesión</button>
+      <a class="link-btn" href="guia.html" style="text-decoration:none">📖 Guía del estudiante</a>
+    </p>
+  </footer>
+
+  <div id="modalRoot" hidden></div>
+  <div id="toastRoot" class="toast-root"></div>
+  <div id="printArea" aria-hidden="true"></div>
+
+  <script src="js/data1.js?v=19"></script>
+  <script src="js/data2.js?v=19"></script>
+  <script src="js/data3.js?v=19"></script>
+  <script src="js/data4.js?v=19"></script>
+  <script src="js/data5.js?v=19"></script>
+  <script src="js/data6.js?v=19"></script>
+  <script src="js/xlsx.js?v=19"></script>
+  <script src="js/config.js?v=19"></script>
+  <script src="js/app.js?v=19"></script>
+</body>
+</html>

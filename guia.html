@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía del estudiante — CPD · Evaluación Interactiva</title>
+  <link rel="stylesheet" href="css/styles.css?v=7">
+  <style>
+    .guide-wrap { max-width: 860px; margin: 0 auto; }
+    .guide-hero { background: linear-gradient(135deg, #2563eb, #1e40af); color: #fff; border-radius: var(--radius); padding: 26px; margin: 18px 0; }
+    .guide-hero h1 { font-size: 24px; margin-bottom: 6px; }
+    .guide-hero p { font-size: 13.5px; opacity: .95; line-height: 1.6; }
+    .g-toc { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
+    .g-toc a { display: block; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); text-decoration: none; color: var(--text); font-size: 13px; background: var(--card); }
+    .g-toc a:hover { border-color: var(--primary); color: var(--primary); }
+    .g-section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 14px 0; box-shadow: var(--shadow); }
+    .g-section h2 { font-size: 18px; color: #1F4E79; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--primary-soft); }
+    .g-section h3 { font-size: 15px; margin: 14px 0 6px; }
+    .g-section p, .g-section li { font-size: 13.5px; line-height: 1.65; color: var(--text); }
+    .g-section ul, .g-section ol { margin: 6px 0 6px 20px; }
+    .g-note { background: var(--accent-soft); border: 1px dashed var(--accent); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; margin: 10px 0; line-height: 1.6; }
+    .g-note strong { color: var(--gold); }
+    .g-back { display: inline-flex; align-items: center; gap: 6px; margin: 18px 0 0; color: var(--primary); text-decoration: none; font-weight: 700; font-size: 14px; }
+    .g-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 10px 0; }
+    .g-table th, .g-table td { border: 1px solid var(--border); padding: 7px 9px; text-align: left; vertical-align: top; }
+    .g-table th { background: var(--primary-soft); color: var(--primary-dark); }
+    kbd { background: var(--bg-soft); border: 1px solid var(--border); border-bottom-width: 2px; border-radius: 5px; padding: 1px 6px; font-size: 12px; font-family: Consolas, monospace; }
+  </style>
+</head>
+<body>
+  <main class="guide-wrap">
+    <a class="g-back" href="index.html">← Volver a la plataforma</a>
+
+    <div class="guide-hero">
+      <h1>📖 Guía del estudiante</h1>
+      <p>Plataforma interactiva de evaluación — Unidad Didáctica «Mantenimiento de rutina y salvaguarda de información en el Centro de Cómputo». Todo lo que necesitas para repasar, rendir tus retos y consultar tus notas.</p>
+    </div>
+
+    <div class="card">
+      <h2 style="font-size:16px;color:#1F4E79;margin-bottom:10px">📑 Contenido</h2>
+      <ul class="g-toc">
+        <li><a href="#s1">1. Cómo ingresar</a></li>
+        <li><a href="#s2">2. Barra superior</a></li>
+        <li><a href="#s3">3. Pestañas de navegación</a></li>
+        <li><a href="#s4">4. Inicio</a></li>
+        <li><a href="#s5">5. Sesiones: lista y detalle</a></li>
+        <li><a href="#s6">6. Repaso ilustrado</a></li>
+        <li><a href="#s7">7. Reto cronometrado</a></li>
+        <li><a href="#s8">8. Resultados y medallas</a></li>
+        <li><a href="#s9">9. Mi panel</a></li>
+        <li><a href="#s10">10. Logros</a></li>
+        <li><a href="#s11">11. Casos prácticos</a></li>
+        <li><a href="#s12">12. Examen final</a></li>
+        <li><a href="#s13">13. Exportar a PDF</a></li>
+        <li><a href="#s14">14. Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s1">
+      <h2>1. Cómo ingresar</h2>
+      <ol>
+        <li>Elige el rol <strong>🎓 Estudiante</strong>.</li>
+        <li>Escribe tu <strong>nombre completo</strong> (apellidos y nombres).</li>
+        <li>Escribe tu <strong>DNI</strong> como contraseña: son exactamente <strong>8 dígitos</strong>. Si el DNI no coincide con el nombre, el sistema no te dejará entrar.</li>
+        <li>La primera vez, selecciona tu <strong>sexo</strong> (se usa solo para las estadísticas generales del docente).</li>
+        <li>Pulsa <em>«Ingresar 🚀»</em>.</li>
+      </ol>
+      <div class="g-note"><strong>🔒 Privacidad:</strong> cada estudiante ve SOLO su propio progreso. Tu DNI es tu contraseña personal: no la compartas.</div>
+    </div>
+
+    <div class="g-section" id="s2">
+      <h2>2. Barra superior</h2>
+      <table class="g-table">
+        <tr><th>Elemento</th><th>Qué muestra / hace</th></tr>
+        <tr><td>⭐ XP</td><td>Puntos de experiencia que acumulas.</td></tr>
+        <tr><td>🏅 Nivel</td><td>Tu nivel: Auxiliar → Técnico de Soporte → Especialista → Experto CPD.</td></tr>
+        <tr><td>🎯 n/16</td><td>Sesiones rendidas de las 16 totales.</td></tr>
+        <tr><td>🌓 Botón de tema</td><td>Cambia entre tema claro y oscuro.</td></tr>
+      </table>
+    </div>
+
+    <div class="g-section" id="s3">
+      <h2>3. Pestañas de navegación</h2>
+      <table class="g-table">
+        <tr><th>Pestaña</th><th>Función</th></tr>
+        <tr><td>🏠 Inicio</td><td>Bienvenida, estadísticas y módulos del curso.</td></tr>
+        <tr><td>📚 Sesiones</td><td>Las 16 sesiones con tu estado y nota en cada una.</td></tr>
+        <tr><td>📊 Mi panel</td><td>Dashboard personalizado con tus notas por sesión.</td></tr>
+        <tr><td>🏆 Logros</td><td>Niveles, medallas y logros especiales.</td></tr>
+        <tr><td>🧩 Casos</td><td>Casuísticas de consolidación (se desbloquean al rendir las 16 sesiones).</td></tr>
+        <tr><td>🎓 Examen final</td><td>Prueba objetiva de consolidación (20 puntos).</td></tr>
+      </table>
+    </div>
+
+    <div class="g-section" id="s4">
+      <h2>4. Inicio</h2>
+      <ul>
+        <li><strong>Bienvenida</strong> con tu nombre y el recordatorio de la nota mínima (14/20).</li>
+        <li><strong>Estadísticas</strong>: XP, nivel, sesiones rendidas y tu <em>promedio final / 20</em> (promedia tus sesiones con los casos prácticos).</li>
+        <li><strong>Barra de progreso</strong> hacia el siguiente nivel.</li>
+        <li><strong>Módulos del curso</strong>: enlaces rápidos a cada sesión con su medalla.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s5">
+      <h2>5. Sesiones: lista y detalle</h2>
+      <p><strong>Lista:</strong> cada tarjeta muestra el número, título, logro, etiquetas (✔ Rendida / Pendiente) y tu <strong>mejor nota</strong>.</p>
+      <p><strong>Detalle</strong> (toca la tarjeta):</p>
+      <ul>
+        <li><strong>📖 Repasar contenido</strong>: tarjetas ilustradas con los conceptos (retroalimentación previa).</li>
+        <li><strong>🎮 Iniciar reto</strong>: evaluación cronometrada. Tienes <strong>máximo 3 intentos</strong>; al agotarlos, queda tu mejor nota.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s6">
+      <h2>6. Repaso ilustrado (retroalimentación)</h2>
+      <ul>
+        <li>Tarjetas con concepto, explicación, viñetas e ilustraciones.</li>
+        <li>Incluye ejemplo aplicado al centro de cómputo y errores comunes.</li>
+        <li>Al final: <strong>«Dato clave»</strong> y el botón <em>«¡Estoy listo! Iniciar reto 🎮»</em>.</li>
+      </ul>
+      <div class="g-note"><strong>💡 Consejo:</strong> repasa antes de cada intento del reto: tienes solo 3 oportunidades.</div>
+    </div>
+
+    <div class="g-section" id="s7">
+      <h2>7. Reto cronometrado</h2>
+      <ul>
+        <li><strong>⏱ Reloj del reto</strong> (tiempo total) + <strong>cronómetro por pregunta</strong> (barra verde → ámbar → roja). Si el tiempo se agota, la pregunta se califica automáticamente.</li>
+        <li><strong>Tipos de pregunta</strong>:
+          <ul>
+            <li><strong>Selección múltiple</strong>: toca la opción y luego <em>«Comprobar ✔»</em>.</li>
+            <li><strong>Verdadero / Falso</strong>: botones grandes ✅ / ❌.</li>
+            <li><strong>Relacionar</strong>: toca una opción de la izquierda y luego su pareja de la derecha.</li>
+            <li><strong>Ordenar pasos</strong>: usa los botones ▲ ▼.</li>
+            <li><strong>Completar</strong>: escribe la respuesta y pulsa <em>Comprobar</em> o <kbd>Enter</kbd>.</li>
+          </ul>
+        </li>
+        <li><strong>Comprobar ✔</strong>: califica al instante con explicación formativa.</li>
+        <li><strong>💾 Guardar y salir</strong>: tu avance se guarda automáticamente (cada pocos segundos y tras cada respuesta). Si sales a mitad del reto, al volver a la sesión verás el botón <strong>«▶️ Continuar reto»</strong> y retomarás exactamente donde quedaste, con tus respuestas y tiempos restantes.</li>
+      </ul>
+      <div class="g-note"><strong>📵 Durante la evaluación</strong> está deshabilitado copiar/pegar y el menú contextual, para la formalidad de la prueba.</div>
+    </div>
+
+    <div class="g-section" id="s8">
+      <h2>8. Resultados y medallas</h2>
+      <ul>
+        <li><strong>Círculo de nota / 20</strong> y la insignia ✅ APROBADO (≥ 14) o ❌ DESAPROBADO.</li>
+        <li><strong>XP ganada</strong> y tu mejor nota histórica.</li>
+        <li><strong>Medallas</strong>: 🥉 14.0–16.9 · 🥈 17.0–19.4 · 🥇 19.5–20.0.</li>
+        <li><strong>Revisión de respuestas</strong> con la explicación de cada pregunta.</li>
+        <li>Botones: 📖 Repasar · 🔁 Reintentar · 📄 Exportar PDF.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s9">
+      <h2>9. Mi panel (tu dashboard personal)</h2>
+      <ul>
+        <li><strong>Estadísticas</strong>: promedio final /20 (sesiones + casos), sesiones rendidas, nota de casos y del examen.</li>
+        <li><strong>📋 Notas por sesión</strong>: barras con tu mejor nota y su estado: ✅ Aprobado (14–20) · ⚠️ Desaprobado (10–13.9) · ⛔ Crítico (0–9.9) · ▫️ Pendiente.</li>
+        <li><strong>⭐ Progreso general</strong>: nivel, XP, medallas y estado del curso.</li>
+        <li><strong>📄 Mi consolidado PDF</strong>: tu reporte completo para imprimir o guardar.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s10">
+      <h2>10. Logros</h2>
+      <ul>
+        <li><strong>Escalera de niveles</strong> con la XP requerida.</li>
+        <li><strong>Medallas por sesión</strong> según tu mejor nota.</li>
+        <li><strong>Logros especiales</strong>: módulo dominado (todas sus sesiones ≥ 17), examen final superado y casos prácticos resueltos (≥ 14).</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s11">
+      <h2>11. Casos prácticos (casuísticas)</h2>
+      <ul>
+        <li>Se desbloquean <strong>al rendir las 16 sesiones</strong>.</li>
+        <li>Son <strong>4 situaciones reales de trabajo</strong> (con su texto completo) con 5 preguntas cada una: requieren <strong>razonamiento lógico y comprensión lectora</strong>.</li>
+        <li>Valor: 20 puntos (20 preguntas × 1 pto) · Nota mínima: 14 · Tiempo total: 25 minutos · Máximo 3 intentos.</li>
+        <li><strong>Importante:</strong> tu nota de casos <strong>promedia con la de las sesiones</strong> para tu calificación final.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s12">
+      <h2>12. Examen final</h2>
+      <ul>
+        <li>Se desbloquea <strong>al rendir las 16 sesiones</strong>.</li>
+        <li><strong>Reglas</strong>: 11 preguntas (5 V/F × 1 pto · 5 selección múltiple × 2 ptos · 1 relacionar de 5 pares × 1 pto por par) = <strong>20 puntos</strong>. Nota mínima: 14.</li>
+        <li><strong>⏱ 20 minutos</strong> en total + cronómetro por pregunta.</li>
+        <li>Máximo <strong>3 intentos</strong>; queda tu mejor nota. Al terminar puedes exportar tu acta en PDF.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s12b">
+      <h2>12B. Tus evidencias para Classroom</h2>
+      <p>Al terminar las 16 sesiones, los casos y el examen final, en <strong>«Mi panel»</strong> encontrarás la sección <strong>🎓 Evidencias para Classroom</strong>:</p>
+      <ul>
+        <li><strong>Un PDF por cada evaluación</strong>: botón 📄 en cada fila (16 sesiones + casos + examen). En el diálogo de impresión elige «Guardar como PDF». Sugerencia de nombre: <em>Apellido_Nombre_S01.pdf</em>.</li>
+        <li><strong>📊 Excel de notas</strong>: botón «Descargar mi Excel de notas» — archivo .xlsx con todas tus notas (es el que el docente importa).</li>
+        <li><strong>📄 Mi consolidado PDF</strong>: resumen completo opcional.</li>
+      </ul>
+      <p>Sube TODOS estos archivos como tarea en Google Classroom: son tus evidencias de evaluación.</p>
+    </div>
+
+    <div class="g-section" id="s13">
+      <h2>13. Exportar a PDF</h2>
+      <ol>
+        <li>Pulsa el botón <em>«📄 Exportar…»</em> de la vista (resultado, mi panel o acta).</li>
+        <li>Se abre el diálogo de impresión del navegador.</li>
+        <li>En destino elige <strong>«Guardar como PDF»</strong> y Guardar.</li>
+      </ol>
+    </div>
+
+    <div class="g-section" id="s14">
+      <h2>14. Preguntas frecuentes</h2>
+      <h3>¿Olvidé mi DNI?</h3>
+      <p>El DNI es tu contraseña. Si no recuerdas el que registraste, solicita ayuda a tu docente (él administra los registros).</p>
+      <h3>¿Puedo reintentar un reto?</h3>
+      <p>Sí, hasta <strong>3 intentos</strong> por evaluación. Queda registrada tu mejor nota.</p>
+      <h3>¿Por qué siempre pide ingresar al abrir?</h3>
+      <p>Por seguridad: cada estudiante se identifica con su nombre y DNI. Tu progreso queda guardado en el equipo.</p>
+      <h3>¿Se puede copiar durante las evaluaciones?</h3>
+      <p>No: durante los retos, casos y examen se deshabilita copiar/pegar y el menú contextual.</p>
+    </div>
+
+    <a class="g-back" href="index.html">← Volver a la plataforma</a>
+    <p style="text-align:center;color:var(--muted);font-size:12px;margin:20px 0 30px">CPD · Evaluación Interactiva · Unidad Didáctica: Mantenimiento de rutina y salvaguarda de información en el Centro de Cómputo · II Semestre 2026</p>
+  </main>
+</body>
+</html>

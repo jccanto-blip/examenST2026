@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía del docente — CPD · Evaluación Interactiva</title>
+  <link rel="stylesheet" href="css/styles.css?v=7">
+  <script>
+    // Acceso restringido: solo se muestra si el docente ya ingresó su código
+    (function () {
+      var ok = false;
+      try { ok = localStorage.getItem('cpd_teacher_open') === '1'; } catch (e) { /* ignorar */ }
+      if (!ok) {
+        document.addEventListener('DOMContentLoaded', function () {
+          document.body.innerHTML =
+            '<main style="max-width:520px;margin:8vh auto;padding:20px;font-family:Segoe UI,system-ui,sans-serif;text-align:center">' +
+            '<div style="font-size:44px">🔒</div>' +
+            '<h1 style="font-size:20px;color:#1e3a8a">Acceso restringido</h1>' +
+            '<p style="color:#555;line-height:1.6">Esta guía es exclusiva del docente. Ingresa primero como docente en la plataforma (pestaña Docente → mantén presionado 3 segundos → código) y luego abre la guía desde el botón «📖 Guía del docente» del dashboard.</p>' +
+            '<a href="index.html" style="display:inline-block;margin-top:10px;padding:10px 18px;background:#2563eb;color:#fff;border-radius:8px;text-decoration:none;font-weight:700">Ir a la plataforma</a>' +
+            '</main>';
+        });
+      }
+    })();
+  </script>
+  <style>
+    .guide-wrap { max-width: 860px; margin: 0 auto; }
+    .guide-hero { background: linear-gradient(135deg, #7c3aed, #5b21b6); color: #fff; border-radius: var(--radius); padding: 26px; margin: 18px 0; }
+    .guide-hero h1 { font-size: 24px; margin-bottom: 6px; }
+    .guide-hero p { font-size: 13.5px; opacity: .95; line-height: 1.6; }
+    .g-toc { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
+    .g-toc a { display: block; padding: 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); text-decoration: none; color: var(--text); font-size: 13px; background: var(--card); }
+    .g-toc a:hover { border-color: var(--primary); color: var(--primary); }
+    .g-section { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; margin: 14px 0; box-shadow: var(--shadow); }
+    .g-section h2 { font-size: 18px; color: #1F4E79; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 2px solid var(--primary-soft); }
+    .g-section h3 { font-size: 15px; margin: 14px 0 6px; }
+    .g-section p, .g-section li { font-size: 13.5px; line-height: 1.65; color: var(--text); }
+    .g-section ul, .g-section ol { margin: 6px 0 6px 20px; }
+    .g-code { display: inline-block; background: var(--primary-soft); color: var(--primary-dark); font-weight: 800; padding: 2px 10px; border-radius: 8px; font-family: Consolas, monospace; letter-spacing: 1px; }
+    .g-note { background: var(--accent-soft); border: 1px dashed var(--accent); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; margin: 10px 0; line-height: 1.6; }
+    .g-note strong { color: var(--gold); }
+    .g-back { display: inline-flex; align-items: center; gap: 6px; margin: 18px 0 0; color: var(--primary); text-decoration: none; font-weight: 700; font-size: 14px; }
+    .g-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin: 10px 0; }
+    .g-table th, .g-table td { border: 1px solid var(--border); padding: 7px 9px; text-align: left; vertical-align: top; }
+    .g-table th { background: var(--primary-soft); color: var(--primary-dark); }
+  </style>
+</head>
+<body>
+  <main class="guide-wrap">
+    <a class="g-back" href="index.html">← Volver a la plataforma</a>
+
+    <div class="guide-hero">
+      <h1>👩‍🏫 Guía del docente</h1>
+      <p>Control y monitoreo de la evaluación — Unidad Didáctica «Mantenimiento de rutina y salvaguarda de información en el Centro de Cómputo». Este documento es de uso exclusivo del docente: contiene el código de acceso.</p>
+    </div>
+
+    <div class="card">
+      <h2 style="font-size:16px;color:#1F4E79;margin-bottom:10px">📑 Contenido</h2>
+      <ul class="g-toc">
+        <li><a href="#s1">1. Acceso docente</a></li>
+        <li><a href="#s2">2. Dashboard: métricas generales</a></li>
+        <li><a href="#s3">3. Cuadro estadístico</a></li>
+        <li><a href="#s4">4. Promedio por sesión</a></li>
+        <li><a href="#s5">5. Tabla de notas</a></li>
+        <li><a href="#s6">6. Exportaciones (PDF · XLSX · base)</a></li>
+        <li><a href="#s7">7. Unificar equipos</a></li>
+        <li><a href="#s8">8. Reglas de evaluación</a></li>
+        <li><a href="#s9">9. Preguntas frecuentes</a></li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s1">
+      <h2>1. Acceso docente (doble barrera)</h2>
+      <p>En la pantalla de acceso aparece la pestaña <strong>👩‍🏫 Docente</strong>. Para ingresar:</p>
+      <ol>
+        <li>Toca la pestaña <strong>Docente</strong>.</li>
+        <li><strong>Mantén presionado el botón morado durante 3 segundos</strong> (verás una barra de progreso llenarse). Un clic normal no hace nada: evita accesos accidentales de estudiantes.</li>
+        <li>Se abrirá la ventana del código: ingrésalo y pulsa «Ingresar».</li>
+      </ol>
+      <p>Código de docente:</p>
+      <p style="text-align:center"><span class="g-code">MMXXVIMASTER</span></p>
+      <div class="g-note"><strong>📖 Esta guía web solo se muestra dentro de la sesión del docente:</strong> no está disponible en la pantalla de acceso ni antes de ingresar el código (la página se bloquea si no hay sesión docente activa en este navegador).</div>
+      <p><strong>Accesos alternos (equivalentes):</strong></p>
+      <ul>
+        <li><strong>URL directa:</strong> agrega <code>#/consolidado</code> a la dirección de la página y pulsa Enter.</li>
+        <li><strong>Atajo de teclado:</strong> <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>D</kbd> en cualquier momento.</li>
+      </ul>
+      <div class="g-note"><strong>🔒 Confidencialidad:</strong> este código NO aparece en la guía del estudiante. <strong>Antes de publicar la web en internet, cambia el código</strong>: edita <code>teacherCode</code> en <code>js/app.js</code> (función <code>newDB</code>) y actualiza la versión <code>?v=</code> de los scripts en <code>index.html</code>.</div>
+    </div>
+
+    <div class="g-section" id="s2">
+      <h2>2. Dashboard: métricas generales</h2>
+      <p>Al ingresar verás el panel de control con 5 tarjetas:</p>
+      <ul>
+        <li><strong>👥 Estudiantes registrados</strong> (total en este equipo).</li>
+        <li><strong>📊 Promedio final del curso / 20</strong> (promedio de los promedios finales de todos los estudiantes).</li>
+        <li><strong>✅ Aprobados (≥ 14)</strong> con cantidad y porcentaje.</li>
+        <li><strong>⚠️ Desaprobados</strong> con cantidad y porcentaje.</li>
+        <li><strong>⏳ Pendientes</strong> (sin evaluaciones) con cantidad y porcentaje.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s3">
+      <h2>3. Cuadro estadístico de estudiantes</h2>
+      <p>Tabla con <strong>números y porcentajes</strong> de:</p>
+      <table class="g-table">
+        <tr><th>Indicador</th><th>Qué mide</th></tr>
+        <tr><td>✅ Aprobados</td><td>Promedio final ≥ 14</td></tr>
+        <tr><td>❌ Desaprobados</td><td>Con evaluaciones, promedio final &lt; 14</td></tr>
+        <tr><td>⏳ Pendientes</td><td>Sin ninguna sesión rendida</td></tr>
+        <tr><td>🏁 Terminados</td><td>Rindieron las 16 sesiones</td></tr>
+        <tr><td>👨 Hombres / 👩 Mujeres</td><td>Según el sexo registrado al ingresar por primera vez</td></tr>
+        <tr><td>❔ Sexo sin dato</td><td>Registros antiguos (antes de esta versión)</td></tr>
+      </table>
+    </div>
+
+    <div class="g-section" id="s4">
+      <h2>3B. Estadísticas generales por componente</h2>
+      <p>Tabla con el rendimiento del curso en cada componente de evaluación:</p>
+      <ul>
+        <li><strong>📚 Sesiones</strong> (promedio de las 16): rendidos, promedio del curso, aprobados y % de aprobación.</li>
+        <li><strong>🧩 Casos prácticos</strong>: rendidos, promedio, aprobados y % de aprobación.</li>
+        <li><strong>🎓 Examen final</strong>: rendidos, promedio, aprobados y % de aprobación.</li>
+      </ul>
+      <p>Estos mismos datos van en la hoja «Resumen» del exportable XLSX.</p>
+    </div>
+
+    <div class="g-section" id="s4b">
+      <h2>4. Promedio del curso por sesión</h2>
+      <ul>
+        <li>Barras con la <strong>nota promedio de cada sesión (S01–S16)</strong> entre todos los estudiantes que la rindieron.</li>
+        <li>Colores de estado con leyenda: ✅ Aprobado (14–20) · ⚠️ Desaprobado (10–13.9) · ⛔ Crítico (0–9.9) · ▫️ Sin datos.</li>
+        <li>Pasa el cursor sobre cada barra para ver cuántos estudiantes la rindieron.</li>
+        <li>Ideal para detectar rápidamente qué temas requieren refuerzo en clase.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s5">
+      <h2>5. Tabla de notas</h2>
+      <p>Una fila por estudiante con: <strong>nombre, DNI, sexo, nota de las 16 sesiones, promedio de sesiones, nota de casos prácticos, PROMEDIO FINAL, sesiones rendidas, examen final y estado</strong> (✅ Aprobado / ❌ Desaprobado / ⏳ Pendiente según el promedio final).</p>
+      <ul>
+        <li>La tabla se desplaza horizontalmente para ver todas las columnas.</li>
+        <li><strong>🔍 Revisar</strong>: abre el detalle completo del estudiante — sus 16 notas de sesión con intentos, casos prácticos, examen final, XP y promedio final.</li>
+        <li><strong>♻️ Eliminar resultados</strong>: borra las notas, intentos y XP del estudiante (pide confirmación) pero <strong>conserva su registro</strong> (nombre y DNI).</li>
+        <li><strong>🗑️ Eliminar estudiante</strong>: elimina el registro completo (pide confirmación; es irreversible).</li>
+        <li>El <strong>promedio final</strong> = (promedio de las 16 sesiones + nota de casos prácticos) ÷ 2.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s5b">
+      <h2>5B. Configuración de la evaluación</h2>
+      <p>Tarjeta <strong>«⚙️ Configuración de la evaluación»</strong> del dashboard:</p>
+      <ul>
+        <li><strong>Nivel de evaluación</strong>: <strong>Básico</strong> (contenidos estándar), <strong>Intermedio</strong> y <strong>Avanzado</strong>. Cada nivel añade tarjetas de repaso y preguntas más exigentes a los 16 retos (los estudiantes ven la insignia del nivel en la sesión y en el repaso).</li>
+        <li><strong>Intentos por reto / de casos / del examen</strong>: personalizables de 1 a 10.</li>
+        <li>Pulsa <strong>«💾 Guardar configuración»</strong>. Aplica a todos los estudiantes de este equipo.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s6">
+      <h2>5C. Importar evidencias de Classroom</h2>
+      <p>Cada estudiante entrega como tarea en Classroom <strong>su Excel de notas</strong> (y sus PDF). Para consolidar:</p>
+      <ol>
+        <li>Descarga de Classroom los archivos <strong>.xlsx</strong> de los estudiantes.</li>
+        <li>En el dashboard docente pulsa <strong>«📥 Importar Excel de estudiantes»</strong> y selecciona todos los archivos a la vez (se permite selección múltiple).</li>
+        <li>La plataforma lee la hoja «Consolidado» de cada Excel y une las mejores notas por estudiante y sesión (identifica por DNI).</li>
+        <li>Verás el consolidado general con <strong>orden de mérito</strong>: 1.° 🥇 · 2.° 🥈 · 3.° 🥉 según el promedio final.</li>
+      </ol>
+    </div>
+
+    <div class="g-section" id="s6">
+      <h2>6. Exportaciones</h2>
+      <table class="g-table">
+        <tr><th>Botón</th><th>Formato</th><th>Para qué sirve</th></tr>
+        <tr><td>📄 Exportar consolidado PDF</td><td>PDF (horizontal)</td><td>Reporte imprimible con resumen estadístico y tabla completa.</td></tr>
+        <tr><td>📊 Exportar consolidado XLSX</td><td>Excel real (.xlsx)</td><td>Hoja «Consolidado» con todas las notas + hoja «Resumen» con el cuadro estadístico. Se abre en Excel/LibreOffice/Sheets.</td></tr>
+        <tr><td>💾 Exportar base (JSON)</td><td>JSON</td><td>Respaldo completo de TODOS los estudiantes del equipo.</td></tr>
+        <tr><td>📥 Importar base</td><td>JSON</td><td>Fusiona bases de otros equipos conservando el mejor puntaje por sesión.</td></tr>
+      </table>
+    </div>
+
+    <div class="g-section" id="s7">
+      <h2>7. Unificar varios equipos (p. ej., las 12 PCs del taller)</h2>
+      <ol>
+        <li>En cada equipo, entra al dashboard docente y pulsa <em>«💾 Exportar base»</em>.</li>
+        <li>Lleva los archivos al equipo principal.</li>
+        <li>En el equipo principal pulsa <em>«📥 Importar base»</em> con cada archivo.</li>
+        <li>Los estudiantes se fusionan por nombre y DNI, conservando el mejor puntaje de cada sesión.</li>
+        <li>Exporta el consolidado final en <strong>XLSX o PDF</strong>.</li>
+      </ol>
+    </div>
+
+    <div class="g-section" id="s8">
+      <h2>7B. Sincronización en la nube (Google Sheets)</h2>
+      <p>Con la nube configurada, cada vez que un estudiante <strong>termina</strong> un reto, los casos o el examen, su resultado se envía automáticamente a tu hoja de Google, sin importar en qué dispositivo trabaje.</p>
+      <ol>
+        <li>Sigue los pasos del archivo <code>APPS_SCRIPT_GOOGLE.txt</code> (crear hoja → pegar el código en Apps Script → implementar como «Aplicación web» con acceso «Cualquier persona»).</li>
+        <li>Pega la URL (termina en <code>/exec</code>) en <code>js/config.js</code> y sube los archivos a GitHub.</li>
+        <li>En el dashboard docente aparecerá el botón <strong>«🔄 Sincronizar nube»</strong>: trae todos los registros de la hoja y consolida la mejor nota por estudiante y sesión.</li>
+      </ol>
+      <div class="g-note"><strong>💡</strong> Los envíos van sin contraseñas (solo nombre, DNI, tipo y nota). No compartas la hoja con estudiantes; la URL pública solo permite escribir registros, no leer la hoja.</div>
+    </div>
+
+    <div class="g-section" id="s8">
+      <h2>8. Reglas de evaluación configuradas</h2>
+      <ul>
+        <li><strong>Escala:</strong> notas de 00 a 20 · Nota mínima aprobatoria: <strong>14</strong>.</li>
+        <li><strong>Reintentos:</strong> máximo <strong>3</strong> por reto de sesión, por casuísticas y por examen. Se registra el mejor intento.</li>
+        <li><strong>Casuísticas:</strong> se desbloquean al rendir las 16 sesiones; 4 casos con razonamiento lógico y comprensión lectora; su nota promedia con las sesiones para el promedio final.</li>
+        <li><strong>Formalidad:</strong> durante las evaluaciones está deshabilitado copiar/pegar y el menú contextual; los estudiantes no pueden exportar/importar/reiniciar su progreso (solo el docente gestiona respaldos).</li>
+        <li><strong>Identidad:</strong> cada estudiante ingresa con nombre completo + DNI (8 dígitos) como contraseña; cada uno ve solo su progreso.</li>
+      </ul>
+    </div>
+
+    <div class="g-section" id="s9">
+      <h2>9. Preguntas frecuentes</h2>
+      <h3>Un estudiante olvidó su DNI registrado</h3>
+      <p>Se ve en la columna DNI de la tabla de notas; puedes eliminarlo y pedirle que se registre de nuevo (perdería su progreso) o decirle su DNI para que reingrese.</p>
+      <h3>¿Dónde se guardan los datos?</h3>
+      <p>En el navegador de cada equipo (localStorage). No se envían a ningún servidor: por eso es clave exportar la base periódicamente.</p>
+      <h3>¿Cómo cambio el código de docente?</h3>
+      <p>En <code>js/app.js</code>, función <code>newDB</code>, campo <code>teacherCode</code>. Luego actualiza la versión <code>?v=</code> de los scripts en <code>index.html</code>.</p>
+      <h3>¿Cómo se publica en internet?</h3>
+      <p>Sube la carpeta a un repositorio GitHub y activa <strong>Settings → Pages → main / root</strong>. Detalles en <code>README.md</code>.</p>
+    </div>
+
+    <a class="g-back" href="index.html">← Volver a la plataforma</a>
+    <p style="text-align:center;color:var(--muted);font-size:12px;margin:20px 0 30px">CPD · Evaluación Interactiva · Documento exclusivo del docente · II Semestre 2026</p>
+  </main>
+</body>
+</html>

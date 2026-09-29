@@ -1,0 +1,88 @@
+============================================================
+SINCRONIZACIÓN EN LA NUBE — Google Sheets + Apps Script
+============================================================
+
+Con esta configuración, cada vez que un estudiante TERMINE un reto,
+casos o examen, su resultado se enviará automáticamente a una hoja
+de Google. El docente consolida su dashboard con un clic.
+
+PASO 1 — Crear la hoja de Google
+---------------------------------
+1. Entra a drive.google.com con tu cuenta de Google.
+2. Nuevo → Hojas de cálculo de Google → nómbrala "CPD Registros".
+   (El script crea automáticamente la pestaña "Registros").
+
+PASO 2 — Crear el Apps Script
+-----------------------------
+1. Con la hoja abierta: menú "Extensiones" → "Apps Script".
+2. Borra TODO el contenido del editor y pega el código de abajo.
+3. Guarda (icono de disquete) con el nombre "CPD Sync".
+
+PASO 3 — Implementar como aplicación web
+----------------------------------------
+1. Botón azul "Implementar" → "Nueva implementación".
+2. Tipo: "Aplicación web".
+3. Ejecutar como: "Yo".
+4. Quién tiene acceso: "Cualquier persona".
+5. "Implementar" → autoriza los permisos → copia la URL que
+   termina en /exec.
+
+PASO 4 — Pegar la URL en la web
+-------------------------------
+1. Abre el archivo js/config.js de la plataforma y pega la URL:
+   var CLOUD_URL = 'https://script.google.com/macros/s/XXXX/exec';
+2. Vuelve a subir js/config.js y js/app.js a GitHub.
+
+PASO 5 — Sincronizar el dashboard docente
+-----------------------------------------
+- En el dashboard docente aparece el botón
+  "🔄 Sincronizar nube": trae todos los registros de la hoja
+  y consolida las mejores notas por estudiante.
+
+NOTAS
+-----
+- La URL de la nube es pública: no contiene datos sensibles
+  (solo registros de notas). No compartas la hoja con estudiantes.
+- Los envíos son anónimos entre sí: no hay contraseñas en la nube.
+
+------------------------------------------------------------
+CÓDIGO PARA PEGAR EN EL APPS SCRIPT:
+------------------------------------------------------------
+
+const HOJA = 'Registros';
+
+function doGet(e) {
+  try {
+    const p = e.parameter || {};
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    let hoja = ss.getSheetByName(HOJA);
+    if (!hoja) {
+      hoja = ss.insertSheet(HOJA);
+      hoja.appendRow(['Fecha', 'Nombre', 'DNI', 'Tipo', 'Sesion', 'Nota', 'Porcentaje', 'Intentos']);
+    }
+    if (p.action === 'export') {
+      const datos = hoja.getDataRange().getValues();
+      return ContentService.createTextOutput(JSON.stringify({ ok: true, filas: datos }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    if (p.action === 'registrar') {
+      hoja.appendRow([
+        new Date(),
+        p.name || '',
+        p.dni || '',
+        p.kind || '',
+        p.sid || '',
+        p.note || '',
+        p.pct || '',
+        p.attempts || ''
+      ]);
+      return ContentService.createTextOutput(JSON.stringify({ ok: true }))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    return ContentService.createTextOutput(JSON.stringify({ ok: false, msg: 'accion desconocida' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({ ok: false, msg: String(err) }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
